@@ -1,16 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [currentSection, setCurrentSection] = useState(0);
-  const [showHearts, setShowHearts] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowHearts(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const sections = [
     {
@@ -66,25 +61,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-birthday-cream via-pink-50 to-birthday-gold/20">
-      {/* Floating hearts animation */}
-      {showHearts && (
-        <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`absolute text-2xl text-birthday-pink/70 animate-float`}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
-              }}
-            >
-              💖
-            </div>
-          ))}
-        </div>
-      )}
+
 
       {/* Navigation */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-20 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
@@ -126,7 +103,7 @@ export default function Index() {
               Сегодня особенный день - твой день рождения! 🌟
               <br />
               <span className="text-birthday-pink font-semibold">
-                Самый особенный день в году для самого особенного человека!
+                Хочу сказать тебе пару тёплых слов
               </span>
             </p>
           </Card>
